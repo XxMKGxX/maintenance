@@ -1,0 +1,34 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-3">Preventative Maintenance Work Detail</h1>
+    <hr class="my-2">
+    <p class="lead">
+        <a class="btn btn-success btn-lg" href="{% url 'maintenanceapp:preventative-update' pk=object.pk%}" role="button">Edit</a>
+    </p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-deck">
+                <div class="card bg-primary text-white">
+                    <div class="card-header">
+                        <h4 class="card-title">Basic</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Scheduled Date: {{object.scheduled_date}}</p>
+                        <p class="card-text">Down Time: {{object.down_time}}</p>
+                        <p class="card-text">Labour Time: {{object.labour_time}}</p>
+                        <p class="card-text">Tasks: {{object.tasks}}
+                        </p>
+                        <p class="card-text">Odometer Value: {{object.odometer_Value}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock  %}

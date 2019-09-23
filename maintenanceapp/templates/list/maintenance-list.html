@@ -1,0 +1,41 @@
+{% extends 'nav.html' %}
+
+{% block list_headings %}
+
+    <tr>
+        <td class="info">Created By</td>
+        <td class="info">Category</td>
+        <td class="info">Down Time</td>
+        <td class="info">Actions</td>
+    </tr>
+
+{% endblock  %}
+
+{% block list_content %}
+
+    <tr>
+        {% for object in object_list %}
+            <td>{{object.created_by}}</td>
+            <td>{{object.category}}</td>
+            <td>{{object.down_time}}</td>
+            <td><div class="dropdown">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Actions
+            </button>
+            <div class="dropdown-menu" aria-labelledby="triggerId">
+                <a class="dropdown-item" href="{% url 'maintenanceapp:maintenance-detail' pk=object.pk%}">
+                    <i class="fas fa-eye"></i> Detail
+                </a>
+                <a class="dropdown-item" href="{% url 'maintenanceapp:maintenance-update' pk=object.pk%}">
+                    <i class="fas fa-edit"></i> Update
+                </a>
+                <a class="dropdown-item" href="{% url 'maintenanceapp:maintenance-delete' pk=object.pk%}">
+                    <i class="fas fa-trash"></i> Delete
+                </a>
+            </div>
+        </div>
+        </td>
+    </tr>
+{% endfor %}
+{% endblock  %}

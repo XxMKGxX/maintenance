@@ -1,0 +1,61 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-3">Maintenance Work Request Detail</h1>
+    <hr class="my-2">
+    <p class="lead">
+        <a class="btn btn-success btn-lg" href="{% url 'maintenanceapp:maintenance-update' pk=object.pk%}" role="button">Edit</a>
+    </p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-deck">
+                <div class="card bg-primary text-white">
+                    <div class="card-header">
+                        <h4 class="card-title">Basic</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Created By: {{object.created_by}}</p>
+                        <p class="card-text">Category: {{object.category}}</p>
+                        <p class="card-text">Down Time: {{object.down_time}}
+                        </p>
+                    </div>
+                </div>
+                <div class="card bg-primary text-white">
+                    <div class="card-header">
+                        <h4 class="card-title">Extras</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Labour Time: {{object.labour_time}}</p>
+                        <p class="card-text">Team: {{object.team}}</p>
+                        <p class="card-text">Responsible: {{object.responsible}}</p>
+                        <p class="card-text">Duration: {{object.duration}}</p>
+                    </div>
+                </div>
+            </div>
+        <hr class="my-2">
+        <div class="row">
+            <div class="col-12">
+                <div class="card-deck">
+                    <div class="card bg-primary text-white">
+                        <div class="card-header">
+                            <h4 class="card-title">Extras</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Consumables Required: {{object.consumables_required}}</p>
+                            <p class="card-text">Resolved By Vendor: {{object.resolved_by_vendor}}</p>
+                            <p class="card-text">Vendor: {{object.vendor}}</p>
+                            <p class="card-text">Service Order Reference: {{object.service_order_ref}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

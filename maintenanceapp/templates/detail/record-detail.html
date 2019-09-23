@@ -1,0 +1,44 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-3">Maintenance Record Detail</h1>
+    <hr class="my-2">
+    <p class="lead">
+        <a class="btn btn-success btn-lg" href="{% url 'maintenanceapp:maintenance-record-update' pk=object.pk %}" role="button">Edit</a>
+    </p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-deck">
+                <div class="card bg-primary text-white">
+                    <div class="card-header">
+                        <h4 class="card-title">Basic</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Breakdown: {{object.breakdown}}</p>
+                        <p class="card-text">Planned Job: {{object.planned_job}}</p>
+                        <p class="card-text">Resolver: {{object.resolver}}</p>
+                        <p class="card-text">Status: {{object.status}}
+                        </p>
+                    </div>
+                </div>
+                <div class="card bg-primary text-white">
+                    <div class="card-header">
+                        <h4 class="card-title">Extras</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Approved By: {{object.approved_by}}</p>
+                        <p class="card-text">Approved Date: {{object.approved_date}}</p>
+                        <p class="card-text">Consumables Used: {{object.consumables_used}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+{% endblock  %}

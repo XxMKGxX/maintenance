@@ -1,0 +1,92 @@
+{% extends 'maintenance.html' %}
+{% load static %}
+{% block content %}
+
+<div class="jumbotron jumbo-gradient">
+    <h1 class="display-3">Maintenance Dashboard</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a href="" class="nav-link active" data-toggle="tab">Actions</a></li>
+                <li class="nav-item"><a href="" class="nav-link active" data-toggle="tab">Dashboard</a></li>
+            </ul>
+            <div class="tab-content panel-body">
+                <div id="actions" class="tab-pane active">
+                    <div class="card-deck">
+                        <div class="card bg-primary text-white">
+                            <div class="card-header">
+                                <h4 class="card-title">Maintenance Request</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:maintenance-create'%}" class="card-link">Maintenance Work
+                                            Request Form</a></li>
+                                    <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:maintenance-list'%}" class="card-link">Maintenance
+                                            List</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card bg-primary text-white">
+                            <div class="card-header">
+                                <h4 class="card-title">Maintenacnce Checklist</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:checklist-create'%}" class="card-link">Maintenance Checklist Create</a></li>
+                                    <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:checklist-list'%}" class="card-link">Maintenance CheckList</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-deck">
+                            <div class="card bg-primary text-white">
+                                <div class="card-header">
+                                    <h4 class="card-title">Preventative Work Request</h4>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:preventative-create'%}" class="card-link">Create
+                                                Preventative</a></li>
+                                        <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:preventative-list' %}" class="card-link">Manage Preventative Work Requests</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <div class="card-deck">
+                        <div class="card bg-primary text-white">
+                            <div class="card-header">
+                                <h4 class="card-title">Maintenance Records</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:maintenance-record-create' %}" class="card-link">Create
+                                            Record</a></li>
+                                    <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:maintenance-record-list'%}" class="card-link">Manage
+                                            Records</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card bg-primary text-white">
+                            <div class="card-header">
+                                <h4 class="card-title"> Checklist Item</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:checklistitem-create'%}" class="card-link">Checklist Item Create</a></li>
+                                    <li class="list-group-item hvr-grow"><a href="{% url 'maintenanceapp:checklistitem-list'%}" class="card-link"> CheckList Item List</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock  %}

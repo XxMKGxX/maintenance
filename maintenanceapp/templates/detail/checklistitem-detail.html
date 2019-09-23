@@ -1,0 +1,31 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-3">Maintenance Checklist Detail</h1>
+    <hr class="my-2">
+    <p class="lead">
+        <a class="btn btn-success btn-lg" href="{% url 'maintenanceapp:checklistitem-update' pk=object.pk%}" role="button">Edit</a>
+    </p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-deck">
+                <div class="card bg-primary text-white">
+                    <div class="card-header">
+                        <h4 class="card-title">Main</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Checklist: {{object.checklist}}</p>
+                        <p class="card-text">Description: {{object.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+{% endblock  %}

@@ -1,0 +1,43 @@
+{% extends 'nav.html' %}
+
+{% block list_headings %}
+
+    <tr>
+        <td class="info">Planned Job</td>
+        <td class="info">Resolver</td>
+        <td class="info">Approved By</td>
+        <td class="info">Approved Date</td>
+        <td class="info">Actions</td>
+    </tr>
+
+{% endblock  %}
+
+{% block list_content %}
+
+    <tr>
+        {% for record in object_list %}
+            <td>{{record.planned_job}}</td>
+            <td>{{record.resolver}}</td>
+            <td>{{record.approved_by}}</td>
+            <td>{{record.approved_date}}</td>
+            <td><div class="dropdown">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Actions
+            </button>
+            <div class="dropdown-menu" aria-labelledby="triggerId">
+                <a class="dropdown-item" href="{% url 'maintenanceapp:maintenance-record-detail' pk=record.pk%}">
+                    <i class="fas fa-eye"></i> Detail
+                </a>
+                <a class="dropdown-item" href="{% url 'maintenanceapp:maintenance-record-update' pk=record.pk%}">
+                    <i class="fas fa-edit"></i> Update
+                </a>
+                <a class="dropdown-item" href="{% url 'maintenanceapp:maintenance-delete' pk=record.pk%}">
+                    <i class="fas fa-trash"></i> Delete
+                </a>
+            </div>
+        </div>
+        </td>
+    </tr>
+{% endfor %}
+{% endblock  %}

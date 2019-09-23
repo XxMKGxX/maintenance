@@ -1,0 +1,37 @@
+{% extends 'nav.html' %}
+
+{% block list_headings %}
+
+    <tr>
+        <td class="info">Checklist</td>
+        <td class="info">Actions</td>
+    </tr>
+
+{% endblock  %}
+
+{% block list_content %}
+
+    <tr>
+        {% for object in object_list %}
+            <td>{{object.checklist}}</td>
+            <td><div class="dropdown">
+            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Actions
+            </button>
+            <div class="dropdown-menu" aria-labelledby="triggerId">
+                <a class="dropdown-item" href="{% url 'maintenanceapp:checklistitem-detail' pk=object.pk%}">
+                    <i class="fas fa-eye"></i> Detail
+                </a>
+                <a class="dropdown-item" href="{% url 'maintenanceapp:checklistitem-update' pk=object.pk%}">
+                    <i class="fas fa-edit"></i> Update
+                </a>
+                <a class="dropdown-item" href="{% url 'maintenanceapp:checklistitem-delete' pk=object.pk%}">
+                    <i class="fas fa-trash"></i> Delete
+                </a>
+            </div>
+        </div>
+        </td>
+    </tr>
+{% endfor %}
+{% endblock  %}

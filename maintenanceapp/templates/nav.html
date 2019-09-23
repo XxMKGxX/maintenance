@@ -1,0 +1,114 @@
+{% extends "maintenance.html" %} 
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'maintenanceapp/css/filters.css' %}">
+{% endblock %}
+{% block content %}
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3"><i class="fas fa-list"></i>List</h1>
+        <p class="lead">{{description}}</p>
+        <p></p>
+            {% if new_link %}
+            <a class="btn btn-primary btn-lg" href="{{new_link}}">Create New <i class="fas fa-pen"></i></a>
+            {% endif %}    
+        <p class="lead">
+        </p>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            {% block other%}{% endblock %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            {% if is_paginated %}
+            
+            {% endif %}
+
+            <div class="card bg-primary text-white">
+                <div class="card-header">
+                    <h3 class="cart-title"><i class="fas fa-filter"></i> Filters</h3>
+                </div>
+                <div class="card-body">
+                    <form action="" method="get">
+                            {{filter.form.as_p}}
+                            
+                        <button class="btn btn-default pull-right" type="submit">Filter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9 col-md-9">
+                <ul class="pagination pagination-lg">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{page_obj.previous_page_number}}">
+                                <i class="fas fa-angle-left"></i>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">
+                                <i class="fas fa-angle-left"></i>
+                            </a>
+                        </li>
+                        {% endif %} {% for i in paginator.page_range %} {% if page_obj.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a class="page-link" href="?page={{i}}">{{i}}</a>
+                        </li>
+                        {% endif %} {% endfor %} {% if page_obj.has_next %}
+                        <li class="page-item next">
+                            <a class="page-link" href="?page={{page_obj.next_page_number}}">
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+        
+                    </ul>
+
+            {% if object_list.all.count == 0 %}
+                <p><b>No items to display</b></p>
+            {% else %}
+            <table class="table table-sm table-striped  table-hover">
+                <thead>
+                    {% block list_headings %}{% endblock %}
+                </thead>
+                <tbody>
+                        {% block list_content %}{% endblock %}
+                </tbody>
+            </table>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+<script>
+    $('input').addClass('form-control');
+    $('select').addClass('form-control');
+    $('#id_date').datepicker({
+        changeYear: true,
+        dateFormat: 'yy-mm-dd'  });
+    $('#id_expected_receipt_date').datepicker({
+        changeYear: true,
+        dateFormat: 'yy-mm-dd' });
+</script>
+{% endblock %}

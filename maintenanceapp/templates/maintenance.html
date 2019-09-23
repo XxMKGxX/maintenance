@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="{% static 'maintenanceapp/js/popper.js' %}"></script>
+    <script type="text/javascript" src="{% static 'maintenanceapp/js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'maintenanceapp/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'maintenanceapp/css/bootstrap.min.css' %}" />
+    <title>Maintenance</title>
+</head>      
+<body>
+    <div class="container">
+    {% block content %}
+    {% endblock %}
+    </div>
+</body>
+</html>
